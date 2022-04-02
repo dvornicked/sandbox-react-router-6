@@ -7,3 +7,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+button {
+  background: none;
+  border: 1px solid gray;
+  padding: 5px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  line-height: 18px;
+}
+
+button a {
+  text-decoration: none;
+  color: black;
+}

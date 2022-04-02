@@ -15,10 +15,8 @@ export const BlogPage = () => {
       <h1>Blog Page</h1>
       <ul>
         {posts.map(post => (
-          <li>
-            <Link key={post.id} to={`/blog/${post.id}`}>
-              {post.title}
-            </Link>
+          <li key={post.id}>
+            <Link to={`/blog/${post.id}`}>{post.title}</Link>
           </li>
         ))}
       </ul>

@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useAuth } from '../../hook/useAuth'
 import { IPost } from './BlogPage'
-import styles from './Pages.module.scss'
 
-export const PostPage = () => {
+export const EditPage = () => {
   const { id } = useParams()
-
+  const { logout } = useAuth() ?? {}
   const navigate = useNavigate()
-  const back = () => navigate(-1)
 
   const [post, setPost] = useState<IPost>()
   useEffect(() => {
@@ -19,11 +18,17 @@ export const PostPage = () => {
     <>
       {post && (
         <>
-          <h2>{post.title}</h2>
-          <p className={styles['post-body']}>{post.body}</p>
-          <button onClick={back}>Back</button>
+          <h2>Edit Page of {post.title}</h2>
+          <p>{post.body}</p>
           <button>
-            <Link to='edit'>Edit</Link>
+            <Link
+              onClick={() =>
+                logout && logout(() => navigate('/', { replace: true }))
+              }
+              to='/'
+            >
+              Logout
+            </Link>
           </button>
         </>
       )}
