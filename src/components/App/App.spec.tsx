@@ -3,6 +3,6 @@ import { App } from '..'
 
 it('renders title', () => {
   render(<App />)
-  const titleElement = screen.getByText(/Sandbox React Router 6/i)
+  const titleElement = screen.getByText(/lorem/i)
   expect(titleElement).toBeInTheDocument()
 })
