@@ -1,6 +1,6 @@
 import styles from './App.module.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { BlogPage, HomePage, AboutPage, NotFoundPage } from '../Pages'
+import { HomePage, BlogPage, PostPage, AboutPage, NotFoundPage } from '../Pages'
 import { Layout } from '../Layout/Layout'
 
 export const App = () => {
@@ -11,6 +11,7 @@ export const App = () => {
           <Route path='/' element={<Layout />}>
             <Route path='/' element={<HomePage />} />
             <Route path='/blog' element={<BlogPage />} />
+            <Route path='/blog/:id' element={<PostPage />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='*' element={<NotFoundPage />} />
           </Route>

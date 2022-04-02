@@ -1,11 +1,34 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
 export const BlogPage = () => {
+  const [posts, setPosts] = useState<IPost[]>([])
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(json => setPosts(json))
+  }, [])
+
   return (
     <>
       <h1>Blog Page</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-        corrupti!
-      </p>
+      <ul>
+        {posts.map(post => (
+          <li>
+            <Link key={post.id} to={`/blog/${post.id}`}>
+              {post.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </>
   )
+}
+
+export interface IPost {
+  userId: number
+  id: number
+  title: string
+  body: string
 }
