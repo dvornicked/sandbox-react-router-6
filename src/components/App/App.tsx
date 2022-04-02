@@ -1,7 +1,7 @@
 import styles from './App.module.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { BlogPage, HomePage, AboutPage, NotFoundPage } from '../Pages'
-import { Layout } from '..'
+import { Layout } from '../Layout/Layout'
 
 export const App = () => {
   return (
@@ -9,7 +9,7 @@ export const App = () => {
       <div className={styles.app}>
         <Routes>
           <Route path='/' element={<Layout />}>
-            <Route index element={<HomePage />} />
+            <Route path='/' element={<HomePage />} />
             <Route path='/blog' element={<BlogPage />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='*' element={<NotFoundPage />} />
